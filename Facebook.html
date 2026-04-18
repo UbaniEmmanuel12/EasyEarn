@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Social App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #f0f2f5;
+    }
+
+    /* Top Bar */
+    .navbar {
+      background: #1877f2;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar input {
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      padding: 10px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 25%;
+      padding: 10px;
+    }
+
+    .profile {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    /* Feed */
+    .feed {
+      width: 50%;
+      padding: 10px;
+    }
+
+    .post {
+      background: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    /* Right Panel */
+    .right {
+      width: 25%;
+      padding: 10px;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar, .feed, .right {
+        width: 100%;
+      }
+    }
+
+    button {
+      background: #1877f2;
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2>MyBook</h2>
+    <input type="text" placeholder="Search...">
+  </div>
+
+  <!-- Main Layout -->
+  <div class="container">
+
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+      <div class="profile">
+        <h3>Emmanuel</h3>
+        <p>Welcome to your profile 👋</p>
+      </div>
+    </div>
+
+    <!-- Feed -->
+    <div class="feed">
+
+      <!-- Create Post -->
+      <div class="post">
+        <input type="text" id="postInput" placeholder="What's on your mind?" style="width:100%; padding:10px;">
+        <br><br>
+        <button onclick="addPost()">Post</button>
+      </div>
+
+      <!-- Posts appear here -->
+      <div id="posts"></div>
+
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right">
+      <div class="profile">
+        <h4>Friends</h4>
+        <p>John</p>
+        <p>Sarah</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function addPost() {
+      let input = document.getElementById("postInput");
+      let text = input.value;
+
+      if (text === "") return;
+
+      let postDiv = document.createElement("div");
+      postDiv.className = "post";
+      postDiv.innerText = text;
+
+      document.getElementById("posts").prepend(postDiv);
+
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
